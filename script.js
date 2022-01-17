@@ -168,14 +168,71 @@ console.log(cart);
     let added = false;
     cart.forEach(product => {
       if(product.title == products[i].title){
+        // alert(
+        //   `You've selected ${product[i].title} to the cart`
+        // );
         product.QTY = parseInt(product.QTY) + parseInt(QTY)
         added = true
         localStorage.setItem("cart",JSON.stringify(cart));
+       
       }
     })
     if (!added){
       cart.push({...products[i] ,QTY});
       localStorage.setItem("cart",JSON.stringify(cart));
+      
+    
     }
 
+  // }
+// showCartBadge();
+// localStorage
+
+// SORT BY CATEGORY
+}
+  function  sortCategory(){
+    console.log("SORTING CATEGORIES NOW")
+    let category = document.querySelector("#f-Category").value;
+  
+    if (category == "All") {
+      return readProducts(products);
+    }
+  
+    let foundProducts = products.filter((product) => {
+      return product.category == category;
+    });
+  
+    readProducts(foundProducts);
+    console.log(foundProducts);
   }
+
+
+function sortName() {
+  let direction = document.querySelector("#Filter-Name").value;
+
+  let sortedProducts = products.sort((a, b) => {
+    if (a.title.toLowerCase() < b.title.toLowerCase()) {
+      return -1;
+    }
+    if (a.title.toLowerCase() > b.title.toLowerCase()) {
+      return 1;
+    }
+    return 0;
+  });
+  if (direction == "descending") sortedProducts.reverse();
+  console.log(sortedProducts);
+  readProducts(products);
+}
+
+// SORT BY PRICE
+
+function sortPrice() {
+  let direction = document.querySelector("#Filter-Price").value;
+
+  let sortedProducts = products.sort((a, b) => a.price - b.price);
+
+  console.log(sortedProducts);
+
+  if (direction == "descending") sortedProducts.reverse();
+  readProducts(sortedProducts);
+}
