@@ -164,14 +164,14 @@ console.log(cart);
 
 
   function addCart(i){
-    let QTY = document.querySelector(`#Qty${i}`).value;
+    let Qty = document.querySelector(`#Qty${i}`).value;
     let added = false;
     cart.forEach(product => {
       if(product.title == products[i].title){
-        // alert(
-        //   `You've selected ${product[i].title} to the cart`
-        // );
-        product.QTY = parseInt(product.QTY) + parseInt(QTY)
+        alert(
+          `You've selected ${product[i].title} to the cart`
+        );
+        product.Qty = parseInt(product.Qty) + parseInt(Qty)
         added = true
         localStorage.setItem("cart",JSON.stringify(cart));
        
@@ -204,8 +204,8 @@ console.log(cart);
   
     readProducts(foundProducts);
     console.log(foundProducts);
+  
   }
-
 
 function sortName() {
   let direction = document.querySelector("#Filter-Name").value;

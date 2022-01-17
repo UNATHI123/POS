@@ -17,7 +17,7 @@ function readCart(cart){
                     <div class="card-body">
                         <h5 class="card-title">${product.title}</h5>
                         <p class="card-text">${product.price}</p>
-                        <input type="number" min=1 value=${product.Qty} id="Qty${i}" onclick="updateCart(${i})"></input>
+                        <input type="number" min=1 value=${product.Qty} id="Qty${i}" onclick="updateCart(${i})"/>
                         <p>R${parseInt(product.Qty) * parseFloat(product.price)}</p>
                         <button class="btn btn-danger" onclick="deleteCart(${i})">remove</button>
                     </div>
